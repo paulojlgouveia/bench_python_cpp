@@ -1,0 +1,44 @@
+
+## start server container
+# (any image will do, the experiment requires packages iperf3, iptables, tcpdump and tshark)
+
+iperf3 -s
+tcpdump -i eth0 -s 96 -w /tmp/server_tcp.pcap "tcp dst port 5201"
+
+
+
+## start client container
+
+tcpdump -i eth0 -s 96 -w /tmp/client_tcp.pcap "tcp dst port 5201"
+iperf3 -c <serverIP> 5201 -b 10M -t 120
+
+# at around second 60 
+iptables -A OUTPUT -j DROP && sleep 10 && iptables -D OUTPUT -j DROP
+
+
+
+# iperf bandwidth should drop to zero and then recover
+# when iperf3 ends, terminate both tcpdump captures (ctrl-c)
+
+
+#run on both tcpdump traces
+
+./parse_single.sh <trace_file> 200
+
+
+
+# Repeat the same experiment but using instead, on the server side
+
+iptables -A INPUT -s <client_ip> -j DROP && sleep 10 && iptables -D INPUT -s <client_ip> -j DROP
+
+
+# In both experiments iPerf3 reports zero bandwidth for some time.
+# Dropping packets at the server side should result in observed packet loss at TCP 
+# (the output of the script will be different than zero).
+# On the client side the output should be zero.
+
+
+
+docker run -it -d c1 /bin/bash
+docker exec -it --privileged 888888888 /bin/bash
+
