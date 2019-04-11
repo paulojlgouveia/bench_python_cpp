@@ -1,0 +1,217 @@
+version: "3.3"
+services:
+  bootstrapper:
+    image: need:2.0
+    command: ["-s", "62af7d7f-eb83-4bc7-9406-4c437cf5e9b0"]
+    deploy:
+      mode: global
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    labels:
+      boot62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    configs:
+      - source: topology
+        target: /topology.xml
+        uid: '0'
+        gid: '0'
+        mode: 0555
+    networks:
+      - NEEDnet
+
+  dashboard-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/dashboard:1.0
+    ports:
+      - "8088:8088"
+    hostname: dashboard
+    deploy:
+      replicas: 1
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    configs:
+      - source: topology
+        target: /topology.xml
+        uid: '0'
+        gid: '0'
+        mode: 0555
+    networks:
+      - NEEDnet
+      - outside
+
+  logger-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/logger:1.0
+    hostname: logger
+    deploy:
+      replicas: 1
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    configs:
+      - source: topology
+        target: /topology.xml
+        uid: '0'
+        gid: '0'
+        mode: 0555
+    networks:
+      - NEEDnet
+      - outside
+
+  client0-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: ['server', '0', '0']
+    hostname: client0
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client1-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: ['server', '0', '0']
+    hostname: client1
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client2-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client2
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client3-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client3
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client4-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client4
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client5-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client5
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client6-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client6
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client7-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineclient:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: []
+    hostname: client7
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  server-62af7d7f-eb83-4bc7-9406-4c437cf5e9b0:
+    image: warpenguin.no-ip.org/alpineserver:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    hostname: server
+    labels:
+      62af7d7f-eb83-4bc7-9406-4c437cf5e9b0: "true"
+    deploy:
+      replicas: 8
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '62af7d7f-eb83-4bc7-9406-4c437cf5e9b0'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+configs:
+  topology:
+    file: 16c_2f/16c_2f.xml
+
+networks:
+  NEEDnet:
+    external:
+      name: test_overlay
+  outside:
+    driver: overlay
+
