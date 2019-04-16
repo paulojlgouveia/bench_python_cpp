@@ -1,0 +1,53 @@
+PING pi0 (192.168.2.37) 56(84) bytes of data.
+64 bytes from pi0 (192.168.2.37): icmp_seq=1 ttl=64 time=0.524 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=2 ttl=64 time=0.461 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=3 ttl=64 time=0.459 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=4 ttl=64 time=0.519 ms
+
+--- pi0 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3063ms
+rtt min/avg/max/mdev = 0.459/0.490/0.524/0.041 ms
+
+------------------------ ------------------------
+PING pi1 (192.168.2.56) 56(84) bytes of data.
+64 bytes from pi1 (192.168.2.56): icmp_seq=1 ttl=64 time=0.530 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=2 ttl=64 time=0.490 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=3 ttl=64 time=0.454 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=4 ttl=64 time=0.472 ms
+
+--- pi1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3032ms
+rtt min/avg/max/mdev = 0.454/0.486/0.530/0.035 ms
+
+------------------------ ------------------------
+PING pi2 (192.168.2.106) 56(84) bytes of data.
+64 bytes from pi2 (192.168.2.106): icmp_seq=1 ttl=64 time=0.526 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=2 ttl=64 time=11.3 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=3 ttl=64 time=0.453 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=4 ttl=64 time=0.472 ms
+
+--- pi2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3052ms
+rtt min/avg/max/mdev = 0.453/3.193/11.321/4.692 ms
+
+------------------------ ------------------------
+PING pi3 (192.168.2.145) 56(84) bytes of data.
+64 bytes from pi3 (192.168.2.145): icmp_seq=1 ttl=64 time=0.380 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=2 ttl=64 time=0.351 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=3 ttl=64 time=0.326 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=4 ttl=64 time=0.318 ms
+
+--- pi3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3015ms
+rtt min/avg/max/mdev = 0.318/0.343/0.380/0.033 ms
+
+------------------------ ------------------------
+PING leviathan (192.168.2.215) 56(84) bytes of data.
+64 bytes from leviathan (192.168.2.215): icmp_seq=1 ttl=64 time=0.266 ms
+64 bytes from leviathan (192.168.2.215): icmp_seq=2 ttl=64 time=0.270 ms
+64 bytes from leviathan (192.168.2.215): icmp_seq=3 ttl=64 time=0.291 ms
+64 bytes from leviathan (192.168.2.215): icmp_seq=4 ttl=64 time=0.267 ms
+
+--- leviathan ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3095ms
+rtt min/avg/max/mdev = 0.266/0.273/0.291/0.019 ms

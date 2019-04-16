@@ -1,0 +1,53 @@
+PING pi0 (192.168.2.37) 56(84) bytes of data.
+64 bytes from pi0 (192.168.2.37): icmp_seq=1 ttl=64 time=0.442 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=2 ttl=64 time=0.434 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=3 ttl=64 time=0.422 ms
+64 bytes from pi0 (192.168.2.37): icmp_seq=4 ttl=64 time=0.413 ms
+
+--- pi0 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 7ms
+rtt min/avg/max/mdev = 0.413/0.427/0.442/0.027 ms
+
+------------------------ ------------------------
+PING pi1 (192.168.2.56) 56(84) bytes of data.
+64 bytes from pi1 (192.168.2.56): icmp_seq=1 ttl=64 time=0.477 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=2 ttl=64 time=0.443 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=3 ttl=64 time=0.420 ms
+64 bytes from pi1 (192.168.2.56): icmp_seq=4 ttl=64 time=0.409 ms
+
+--- pi1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 17ms
+rtt min/avg/max/mdev = 0.409/0.437/0.477/0.029 ms
+
+------------------------ ------------------------
+PING pi2 (192.168.2.106) 56(84) bytes of data.
+64 bytes from pi2 (192.168.2.106): icmp_seq=1 ttl=64 time=0.475 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=2 ttl=64 time=0.416 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=3 ttl=64 time=0.395 ms
+64 bytes from pi2 (192.168.2.106): icmp_seq=4 ttl=64 time=0.421 ms
+
+--- pi2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 22ms
+rtt min/avg/max/mdev = 0.395/0.426/0.475/0.038 ms
+
+------------------------ ------------------------
+PING pi3 (192.168.2.145) 56(84) bytes of data.
+64 bytes from pi3 (192.168.2.145): icmp_seq=1 ttl=64 time=0.341 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=2 ttl=64 time=0.318 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=3 ttl=64 time=0.248 ms
+64 bytes from pi3 (192.168.2.145): icmp_seq=4 ttl=64 time=0.250 ms
+
+--- pi3 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 5ms
+rtt min/avg/max/mdev = 0.248/0.289/0.341/0.042 ms
+
+------------------------ ------------------------
+PING pi4 (192.168.2.10) 56(84) bytes of data.
+64 bytes from pi4 (192.168.2.10): icmp_seq=1 ttl=64 time=0.323 ms
+64 bytes from pi4 (192.168.2.10): icmp_seq=2 ttl=64 time=0.265 ms
+64 bytes from pi4 (192.168.2.10): icmp_seq=3 ttl=64 time=0.274 ms
+64 bytes from pi4 (192.168.2.10): icmp_seq=4 ttl=64 time=0.276 ms
+
+--- pi4 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 21ms
+rtt min/avg/max/mdev = 0.265/0.284/0.323/0.028 ms
