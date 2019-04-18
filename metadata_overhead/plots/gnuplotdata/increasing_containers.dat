@@ -1,0 +1,5 @@
+#Scenario	Average bytes/sec
+2c_1f	5014
+4c_1f	5004
+8c_1f	5003
+16c_1f	4995
