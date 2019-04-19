@@ -4,6 +4,7 @@ from glob import glob
 from os import path
 import json
 import sys
+from operator import itemgetter
 
 #time unit, default is 1.0
 UNIT=1.0
@@ -47,22 +48,24 @@ def parse_NEED_log(file):
 	return returnval
 
 def overlap(*d):
-	lower_bound = 0
-	upper_bound = d[0][-1][0]
-	
-	#
-	print("!!! d[0][-1] " + str(d[0][-1]))
+	#print("!!! d[0][-1] " + str(d[0][-1]))
 	# print("!!! d[0] " + str(d[0]))
 	# print("!!! d[1] " + str(d[1]))
 	
 	
-	
+	# ignore server flows
 	max_len = 0
 	for dataset in d:
 		if len(dataset) > max_len:
 			max_len = len(dataset)
+		
+	min_len = max_len/2
+	new_data = []
+	for dataset in d:
+		if len(dataset) > min_len:
+			new_data.append(dataset)
 	
-	
+	# cant change tuple structure
 	#min_len = max_len/2
 	#to_delete = []
 	#i = 0
@@ -75,30 +78,32 @@ def overlap(*d):
 		#d.pop(idx)
 	
 	
+	#[print(x) for ]
+	#for dataset in new_data:
+		#dataset = sorted(dataset, key=itemgetter(1))
 	
-	min_len = max_len/2
-	new_data = []
-	for dataset in d:
-		if len(dataset) > min_len:
-			new_data.append(dataset)
-
 	
+	lower_bound = 0
+	upper_bound = new_data[0][-1][0]
 	
 	i = 0
 	for dataset in new_data:
-		print(str(i) + " - " + str(len(dataset)))
 		i += 1
 		if dataset[0][0] > lower_bound:
 			if upper_bound < dataset[0][0]:
 				print("!!! " + str(upper_bound) + " < " + str(dataset[0][0]) + "\n" + str(dataset))
 				exit(-1)
 			lower_bound = dataset[0][0]
+			print(str(i) + " - " + str(len(dataset)) + " . " + str(lower_bound))
+			
 		if dataset[-1][0] < upper_bound:
 			if lower_bound > dataset[-1][0]:
 				print("!!! " + str(lower_bound) + " > " + str(dataset[-1][0]) + "\n" + str(dataset))
 				exit(-1)
 			upper_bound = dataset[-1][0]
-
+			print(str(i) + " - " + str(len(dataset)) + " | " + str(upper_bound))
+			
+			
 	print("lower_bound " + str(lower_bound))
 	print("upper_bound " + str(upper_bound))
 	
@@ -196,13 +201,13 @@ def main():
 
 	#data_sets = [d for d in data_sets if len(d) >= 600]
 
-	print("Got " + str(len(data_sets)) + " data sets")
-
-	data_sets = overlap(*data_sets)
-	# trim(60, 60, *data_sets)
-	trim_to(60, 480, *data_sets)
+	data_sets = overlap(*data_sets)	
+	#trim_to(60, 180, *data_sets)
+	trim_to(60, 300, *data_sets)
 	#trim(0, 650, *data_sets)
 	#pad(*data_sets)
+
+	print("Got " + str(len(data_sets)) + " data sets")
 
 	lines_file = open(line_data_file, mode="w")
 	bars_file = open(bar_data_file, mode="w")

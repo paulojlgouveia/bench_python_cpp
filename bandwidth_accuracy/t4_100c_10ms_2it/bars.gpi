@@ -1,0 +1,9 @@
+set ylabel "Throughput"
+set ytics 10000000
+set mytics 10
+set format y "%.0s%cbit/s"
+set boxwidth 0.7
+set style fill solid 0.5
+plot "bars.dat" using 2:xtic(1) with boxes lc rgb "#DAA520" title "Mean throughput", \
+""        using 0:2:3:4 with yerrorbars lt 1 lc rgb "#AA0000" title "Min-Max", \
+""         using 0:2:5 with yerrorbars lt 1 lc rgb "#00AA00" title "Standard deviation"
